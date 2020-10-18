@@ -49,6 +49,22 @@ class LinkedList:
             if prevNode == None:
                 print("The Node with the Given Data was not Found")
         return
+#The Method DeleteNode is used to delete a Node with the Given Data of the Linked List Object
+    def DeleteNode(self,data):
+        currNode = self.head
+        prevNode = None
+        if self.head.data == data:
+            self.head = self.head.next
+            currNode = None
+        else:
+            while currNode.next != None and currNode.next.data != data :
+                currNode = currNode.next
+            if currNode.next != None:
+                prevNode = currNode;
+                prevNode.next = prevNode.next.next
+                currNode = None
+            else:
+                print("The Node with the Given Data is Not Found in the Linked List")
 
 #The Method Display is used to Display the Created Linked List
     def Display(self):
@@ -71,7 +87,11 @@ if __name__ == '__main__':
     L1.InsertAfter(5,9)
     L1.InsertAfter(78,16)
     L1.Display()
-
+    L1.DeleteNode(24)
+    L1.DeleteNode(20)
+    L1.DeleteNode(70)
+    L1.DeleteNode(5)
+    L1.Display()
 
 
 
