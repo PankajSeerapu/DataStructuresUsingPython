@@ -53,18 +53,42 @@ class LinkedList:
     def DeleteNode(self,data):
         currNode = self.head
         prevNode = None
-        if self.head.data == data:
-            self.head = self.head.next
-            currNode = None
-        else:
-            while currNode.next != None and currNode.next.data != data :
-                currNode = currNode.next
-            if currNode.next != None:
-                prevNode = currNode;
-                prevNode.next = prevNode.next.next
+        if self.head != None:
+            if self.head.data == data:
+                self.head = self.head.next
                 currNode = None
             else:
-                print("The Node with the Given Data is Not Found in the Linked List")
+                while currNode.next != None and currNode.next.data != data :
+                    currNode = currNode.next
+                if currNode.next != None:
+                    prevNode = currNode;
+                    prevNode.next = prevNode.next.next
+                    currNode = None
+                else:
+                    print("The Node with the Given Data is Not Found in the Linked List")
+        else:
+            print("This Function cannot be used if the Given Linked List is Empty")
+
+#The Method DeleteNodeN is used to delete the Nth Node in the Linked List
+    def DeleteNodeN(self,Position):
+        currNode = self.head
+        prevNode = self.head
+        if self.head != None: #check if the Linked List is empty
+            if Position == 0:
+                self.head = currNode.next
+                currNode = None
+            else:
+                while currNode != None and Position != 0:
+                    prevNode = currNode
+                    currNode = currNode.next
+                    Position = Position - 1
+                if Position == 0:
+                    prevNode.next = currNode.next
+                    currNode = None
+                else:
+                    print("Given Position is not found in the Linked List")
+        else:
+            print("This Function cannot be used if the Given Linked List is Empty")
 
 #The Method Display is used to Display the Created Linked List
     def Display(self):
@@ -92,6 +116,12 @@ if __name__ == '__main__':
     L1.DeleteNode(70)
     L1.DeleteNode(5)
     L1.Display()
+    L1.DeleteNodeN(0)
+    L1.DeleteNodeN(5)
+    L1.DeleteNodeN(3)
+    L1.DeleteNodeN(1)
+    L1.Display()
+
 
 
 
