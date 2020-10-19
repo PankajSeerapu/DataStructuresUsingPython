@@ -90,6 +90,14 @@ class LinkedList:
         else:
             print("This Function cannot be used if the Given Linked List is Empty")
 
+#Delete the Linked List of the Given Linked List Object
+    def DeleteList(self):
+        currentNode = nextNode = self.head
+        while currentNode != None:
+            nextNode = nextNode.next
+            currentNode = None
+            currentNode = nextNode
+        self.head = None
 #The Method Display is used to Display the Created Linked List
     def Display(self):
         temp = self.head
@@ -120,6 +128,8 @@ if __name__ == '__main__':
     L1.DeleteNodeN(5)
     L1.DeleteNodeN(3)
     L1.DeleteNodeN(1)
+    L1.Display()
+    L1.DeleteList()
     L1.Display()
 
 
